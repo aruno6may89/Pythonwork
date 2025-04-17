@@ -19,7 +19,7 @@ def test_login():
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     driver.implicitly_wait(10)  # Wait up to 10 seconds for elements to appear
 
-    # Step 1: Open the site
+    # Step 1: Open the site Ar workflow
     driver.get("https://staging-v2.arworkflow.com/")
     
     # Step 2: Log in
@@ -34,8 +34,12 @@ def test_login():
     driver.find_element(By.XPATH, "//*[normalize-space()='Add Customer']").click()
 
     # Step 5: Enter the random name
-    driver.find_element(By.XPATH, "//input[@name='firstName']").send_keys(random_username)
-
+    First_name=driver.find_element(By.XPATH, "//input[@name='firstName']")
+    First_name.send_keys(random_username)
+    Middele_name=driver.find_element(By.XPATH, "//input[@name='middleName']")
+    Middele_name.send_keys(random_username)
+    Last_name=driver.find_element(By.XPATH,"//input[@name='lastName']")
+    Last_name.send_keys("testone")
     # Done
     print("Successfully logged in and created customer with name:", random_username)
     driver.quit()
