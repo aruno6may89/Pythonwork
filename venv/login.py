@@ -35,7 +35,7 @@ def test_login():
 
     # Step 5: Enter the random name
     driver.find_element(By.XPATH, "//input[@name='firstName']").send_keys(random_username)
-
+    driver.find_element(By.XPATH, "//input[@name='middleNAme']").send_keys(random_username)
     # Done
     print("Successfully logged in and created customer with name:", random_username)
     driver.quit()
