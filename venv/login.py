@@ -19,7 +19,7 @@ def test_login():
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     driver.implicitly_wait(10)  # Wait up to 10 seconds for elements to appear
 
-    # Step 1: Open the site
+    # Step 1: Open the site Ar workflow
     driver.get("https://staging-v2.arworkflow.com/")
     
     # Step 2: Log in
