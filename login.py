@@ -1,9 +1,13 @@
+from ssl import Options
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import random
 import string
+
+
 
 # Function to generate a random username
 def generate_random_name():
@@ -40,7 +44,11 @@ def test_login():
     Middele_name.send_keys(random_username)
     Last_name=driver.find_element(By.XPATH,"//input[@name='lastName']")
     Last_name.send_keys("testone")
-    # Done
+
+    #assertions
+    label=driver.find_element(By.XPATH,"//label[normalize-space()='Company Name']")
+    assert label.is_displayed()
+    time.sleep(10)    # Done
     print("Successfully logged in and created customer with name:", random_username)
     driver.quit()
 
