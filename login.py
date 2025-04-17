@@ -37,12 +37,15 @@ def test_login():
     # Step 4: Click Add Customer
     driver.find_element(By.XPATH, "//*[normalize-space()='Add Customer']").click()
 
-    # Step 5: Enter the random name
+    # Step 5: Set the elaements into variables
     First_name=driver.find_element(By.XPATH, "//input[@name='firstName']")
-    First_name.send_keys(random_username)
     Middele_name=driver.find_element(By.XPATH, "//input[@name='middleName']")
-    Middele_name.send_keys(random_username)
     Last_name=driver.find_element(By.XPATH,"//input[@name='lastName']")
+
+    #step 6 : enter the values into fields
+
+    First_name.send_keys(random_username)
+    Middele_name.send_keys(random_username)
     Last_name.send_keys("testone")
 
     #assertions
