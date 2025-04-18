@@ -1,9 +1,13 @@
+from ssl import Options
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import random
 import string
+
+
 
 # Function to generate a random username
 def generate_random_name():
@@ -33,10 +37,34 @@ def test_login():
     # Step 4: Click Add Customer
     driver.find_element(By.XPATH, "//*[normalize-space()='Add Customer']").click()
 
-    # Step 5: Enter the random name
-    driver.find_element(By.XPATH, "//input[@name='firstName']").send_keys(random_username)
-    driver.find_element(By.XPATH, "//input[@name='middleNAme']").send_keys(random_username)
-    # Done
+    # Step 5: Set the elaements into variables
+    First_name=driver.find_element(By.XPATH, "//input[@name='firstName']")
+    Middele_name=driver.find_element(By.XPATH, "//input[@name='middleName']")
+    Last_name=driver.find_element(By.XPATH,"//input[@name='lastName']")
+
+    #step 6 : enter the values into fields
+
+    First_name.send_keys(random_username)
+    Middele_name.send_keys(random_username)
+    Last_name.send_keys("testone")
+
+   
+    #assertions
+    label=driver.find_element(By.XPATH,"//label[normalize-space()='Company Name']")
+    assert label.is_displayed()
+
+     #step7 Checking SMStemplate page
+
+    driver.find_element(By.XPATH,"//span[normalize-space()='Actions']").click()
+    driver.find_element(By.XPATH,"//div[normalize-space()='SMS']").click()
+    time.sleep(5)
+    driver.find_element(By.XPATH,"//button[normalize-space()='Preview']").click()
+    time.sleep(10)   
+    
+    #SMS assert
+
+    assert "SMS Template Preview"in driver.page_source
+     # Done
     print("Successfully logged in and created customer with name:", random_username)
     driver.quit()
 

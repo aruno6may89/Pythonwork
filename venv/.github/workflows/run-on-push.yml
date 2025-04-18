@@ -1,22 +1,36 @@
-name: Run Python Script on Push
+name: Run Selenium Script with Chrome
 
 on:
   push:
-    branches:
-      - main  # or "master" or any branch you want
+    branches: [main]
 
 jobs:
-  run-script:
+  test-with-selenium:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
+
+      - name: Install Chrome
+        run: |
+          sudo apt update
+          sudo apt install -y wget unzip
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+
+      - name: Install ChromeDriver
+        run: |
+          CHROME_VERSION=$(google-chrome --version | grep -oP "\d+\.\d+\.\d+")
+          wget -N https://chromedriver.storage.googleapis.com/$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip
+          sudo mv chromedriver /usr/local/bin/
+          chromedriver --version
 
       - name: Install dependencies
         run: |
@@ -25,4 +39,4 @@ jobs:
 
       - name: Run script
         run: |
-          python your_script.py  # change this to your actual script
+          python your_script.py
