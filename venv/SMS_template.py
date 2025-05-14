@@ -71,7 +71,7 @@ def sms():
         print(f"SMS template created successfully with name: {list.text}")
     else:
         print("SMS not found in the list")
-
+        
     wait = WebDriverWait(driver, 10)
     
 
