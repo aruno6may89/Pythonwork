@@ -37,7 +37,7 @@ jobs:
     - name: Run Selenium Tests on EC2
       run: |
         ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i key.pem ubuntu@ec2-65-1-108-153.ap-south-1.compute.amazonaws.com << 'EOF'
-          cd /home/ubuntu/your-repo
+          cd /home/ubuntu/Pythonwork
           if [ -d "venv" ]; then
             source venv/bin/activate
           else
