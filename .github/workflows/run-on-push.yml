@@ -24,7 +24,7 @@ jobs:
 
     - name: Start EC2 instance
       run: |
-        aws ec2 start-instances --instance-ids i-xxxxxxxxxxxxxxxxx --region your-region
+        aws ec2 start-instances --instance-ids i-xxxxxxxxxxxxxxxxx --region ap-south-1
         echo "Waiting for EC2 to be ready..."
         sleep 60  # You can use polling here if preferred
 
