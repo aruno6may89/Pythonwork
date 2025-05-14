@@ -36,12 +36,17 @@ jobs:
 #ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
     - name: Run Selenium Tests on EC2
       run: |
-        
         ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i key.pem ubuntu@ec2-65-1-108-153.ap-south-1.compute.amazonaws.com << 'EOF'
-          cd /home/ubuntu/Pythonwork
-          git pull origin main
-          source venv/bin/activate  # Or however your virtual env is set
+          cd /home/ubuntu/your-repo
+          if [ -d "venv" ]; then
+            source venv/bin/activate
+          else
+            echo "Virtual environment not found. Please set it up."
+            exit 1
+          fi
+
+          pip show pytest || pip install pytest
           pytest > test-output.log
-          tail -n 50 test-output.log  # Send last 50 lines as summary
+          tail -n 50 test-output.log
         EOF
 
