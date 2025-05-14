@@ -3,7 +3,7 @@ name: Run Selenium Tests on EC2
 on:
   push:
     branches:
-      - main  # Trigger on push to main branch
+      - main  # or your default branch
 
 jobs:
   run-tests:
@@ -12,7 +12,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-
+    
+      
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
@@ -20,11 +21,12 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
 
+
     - name: Start EC2 instance
       run: |
-        aws ec2 start-instances --instance-ids i-0ae50a368602b9b32 --region ${{ secrets.AWS_REGION }}
+        aws ec2 start-instances --instance-ids i-0ae50a368602b9b32 --region ap-south-1
         echo "Waiting for EC2 to be ready..."
-        sleep 60  # Optional: Replace with polling if needed
+        sleep 60  # You can use polling here if preferred
 
     - name: Setup SSH key
       run: |
@@ -33,22 +35,11 @@ jobs:
 
     - name: Run Selenium Tests on EC2
       run: |
-        ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+        ssh -i "awskeyarun.pem" ubuntu@ec2-65-1-108-153.ap-south-1.compute.amazonaws.com
+
           cd ${{ secrets.EC2_REPO_DIR }}
           git pull origin main
-          source venv/bin/activate
+          source venv/bin/activate  # Or however your virtual env is set
           pytest > test-output.log
-          tail -n 50 test-output.log
+          tail -n 50 test-output.log  # Send last 50 lines as summary
         EOF
-
-    - name: Upload Test Output
-      if: always()
-      run: |
-        scp -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:${{ secrets.EC2_REPO_DIR }}/test-output.log ./test-output.log
-
-    - name: Upload test log to GitHub
-      if: always()
-      uses: actions/upload-artifact@v2
-      with:
-        name: selenium-test-output
-        path: test-output.log
