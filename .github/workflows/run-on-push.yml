@@ -31,6 +31,9 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
 
+    - name: Debug AWS CLI
+      run: aws sts get-caller-identity
+
 
     - name: Run Selenium Tests on EC2
       run: |
