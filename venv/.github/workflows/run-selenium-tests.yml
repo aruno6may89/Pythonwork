@@ -1,0 +1,35 @@
+name: Run Selenium Tests on EC2
+
+on:
+  push:
+    branches:
+      - main  # or your default branch
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Start EC2 instance
+      run: |
+        aws ec2 start-instances --instance-ids i-xxxxxxxxxxxxxxxxx --region your-region
+        echo "Waiting for EC2 to be ready..."
+        sleep 60  # You can use polling here if preferred
+
+    - name: Setup SSH key
+      run: |
+        echo "${{ secrets.EC2_KEY }}" > key.pem
+        chmod 400 key.pem
+
+    - name: Run Selenium Tests on EC2
+      run: |
+        ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+          cd ${{ secrets.EC2_REPO_DIR }}
+          git pull origin main
+          source venv/bin/activate  # Or however your virtual env is set
+          pytest > test-output.log
+          tail -n 50 test-output.log  # Send last 50 lines as summary
+        EOF

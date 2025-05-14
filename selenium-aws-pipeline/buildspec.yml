@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+      - pip install -r requirements.txt
+      - apt-get update
+      - apt-get install -y chromium-browser chromium-chromedriver
+      
+  pre_build:
+    commands:
+      - echo "Setting up Chrome options for headless execution"
+      
+  build:
+    commands:
+      - python SMS_template.py
+      
+  post_build:
+    commands:
+      - echo "Test execution completed"
+
+artifacts:
+  files:
+    - '**/*'

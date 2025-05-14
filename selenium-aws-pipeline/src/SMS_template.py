@@ -20,10 +20,9 @@ def sms():
 
     # Setup Chrome options
     chrome_options = Options()
-    chrome_options.add_argument("--start-maximized")
-    chrome_options.add_argument("--headless")  # Add headless mode for CI/CD
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--headless")  # Run in headless mode for CI/CD
+    chrome_options.add_argument("--no-sandbox")  # Bypass OS security model
+    chrome_options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
 
     # Initialize Chrome WebDriver
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
@@ -37,36 +36,32 @@ def sms():
     driver.find_element(By.XPATH, "//input[@type='password']").send_keys("Qazplm54321@")
     driver.find_element(By.XPATH, "//button[normalize-space()='Sign In']").click()
 
-
     # SMS Template Create
     driver.find_element(By.XPATH, "//span[normalize-space()='Actions']").click()
     driver.find_element(By.XPATH, "//span[normalize-space()='SMS']").click()
     driver.find_element(By.XPATH, "//button[normalize-space()='Create Template']").click()
     template_name = driver.find_element(By.XPATH, "//input[@name='smsTemplate.templateName']")
     template_name.send_keys(random_username)
-    Name=template_name.get_attribute("value") #Store the template name
+    Name = template_name.get_attribute("value")  # Store the template name
     content = driver.find_element(By.XPATH, "//div[@role='textbox']")
     content.send_keys("hello this is a test message")
     merge_fields = driver.find_element(By.XPATH, "//button[@role='combobox']")
     merge_fields.click()
     time.sleep(5)
     actions = ActionChains(driver)
-    #actions.send_keys(Keys.ARROW_DOWN)
     actions.send_keys(Keys.ENTER)
     actions.perform()
-    driver.find_element(By.XPATH,"//button[@type='submit']").click()
+    driver.find_element(By.XPATH, "//button[@type='submit']").click()
     time.sleep(10)
 
-    #verify the Created SMS in Search
-
-    Searchbox=driver.find_element(By.XPATH,"//*[@placeholder='Search']")
+    # Verify the Created SMS in Search
+    Searchbox = driver.find_element(By.XPATH, "//*[@placeholder='Search']")
     Searchbox.send_keys(Name)
     actions.send_keys(Keys.ENTER)
     actions.perform()
     time.sleep(5)
 
-    #verify the created SMS
-
+    # Verify the created SMS
     wait = WebDriverWait(driver, 20)
     list = wait.until(EC.presence_of_element_located((By.XPATH, "(//*[@class='flex items-center justify-between gap-5 self-stretch']//h6)[1]")))
     if list:
@@ -74,11 +69,11 @@ def sms():
         print(f"SMS template created successfully with name: {list.text}")
     else:
         print("SMS not found in the list")
-        
+
     wait = WebDriverWait(driver, 10)
-    
 
     time.sleep(10)  # Pause to see results
     driver.quit()
 
-sms()
+if __name__ == "__main__":
+    sms()
