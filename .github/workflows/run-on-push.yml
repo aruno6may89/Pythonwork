@@ -33,10 +33,11 @@ jobs:
         echo "${{ secrets.EC2_KEY }}" > key.pem
         chmod 400 key.pem
 
+#ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
     - name: Run Selenium Tests on EC2
       run: |
-        ssh -i "awskeyarun.pem" ubuntu@ec2-65-1-108-153.ap-south-1.compute.amazonaws.com
-
+        
+        ssh -i key.pem ubuntu@ec2-65-1-108-153.ap-south-1.compute.amazonaws.com
           cd ${{ secrets.EC2_REPO_DIR }}
           git pull origin main
           source venv/bin/activate  # Or however your virtual env is set
