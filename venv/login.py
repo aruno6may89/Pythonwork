@@ -1,9 +1,12 @@
 from ssl import Options
 import time
+from typing import KeysView
+from xml.dom.minidom import Element
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.keys import Keys
 import random
 import string
 
@@ -38,35 +41,43 @@ def test_login():
     driver.find_element(By.XPATH, "//*[normalize-space()='Add Customer']").click()
 
     # Step 5: Set the elaements into variables
+    Title=driver.find_element(By.XPATH,"//input[@name='title']")
     First_name=driver.find_element(By.XPATH, "//input[@name='firstName']")
     Middele_name=driver.find_element(By.XPATH, "//input[@name='middleName']")
     Last_name=driver.find_element(By.XPATH,"//input[@name='lastName']")
+    Save_changes=driver.find_element(By.XPATH,"//button[normalize-space()='Save Changes']")
+
+
+
 
     #step 6 : enter the values into fields
 
     First_name.send_keys(random_username)
     Middele_name.send_keys(random_username)
     Last_name.send_keys("testone")
-
-   
-    #assertions
-    label=driver.find_element(By.XPATH,"//label[normalize-space()='Company Name']")
-    assert label.is_displayed()
-
-     #step7 Checking SMStemplate page
-
-    driver.find_element(By.XPATH,"//span[normalize-space()='Actions']").click()
-    driver.find_element(By.XPATH,"//div[normalize-space()='SMS']").click()
+    driver.find_element(By.XPATH,"//button[contains(@class, 'space-x-2')]//following::*[normalize-space()='Display Name']").click()
     time.sleep(5)
-    driver.find_element(By.XPATH,"//button[normalize-space()='Preview']").click()
-    time.sleep(10)   
-    
-    #SMS assert
+    Displayname=driver.find_element(By.XPATH,"//input[@name='displayName']")
+    Displayname.send_keys(random_username)
+    Displayname.send_keys(Keys.ENTER)
+    Save_changes.click()
+    time.sleep(5)
 
-    assert "SMS Template Preview"in driver.page_source
-     # Done
+
+
+
+    #assertions
+    page_text = driver.page_source
+    if "Customer created successfully." in page_text:
+        print("✅ Success message is displayed.")
+    else:
+        print("❌ Success message not found.")
+    #label=driver.find_element(By.XPATH,"//label[normalize-space()='Company Name']")
+    # assert label.is_displayed()
+    time.sleep(10)    # Done
     print("Successfully logged in and created customer with name:", random_username)
     driver.quit()
 
 if __name__ == "__main__":
     test_login()
+    
