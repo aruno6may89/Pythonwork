@@ -37,10 +37,11 @@ jobs:
     - name: Run Selenium Tests on EC2
       run: |
         
-          ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i key.pem ubuntu@ec2-65-1-108-153.ap-south-1.compute.amazonaws.com << 'EOF'
+        ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i key.pem ubuntu@ec2-65-1-108-153.ap-south-1.compute.amazonaws.com << 'EOF'
           cd /home/ubuntu/Pythonwork
           git pull origin main
           source venv/bin/activate  # Or however your virtual env is set
           pytest > test-output.log
           tail -n 50 test-output.log  # Send last 50 lines as summary
         EOF
+
