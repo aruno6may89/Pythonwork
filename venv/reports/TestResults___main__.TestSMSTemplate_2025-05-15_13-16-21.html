@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unittest Results</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-capitalize">Unittest Results</h2>
+                <p class='attribute'><strong>Start Time: </strong>2025-05-15 13:16:21</p>
+                <p class='attribute'><strong>Duration: </strong>19.78 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 1, Pass: 0, Error: 1</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>__main__.TestSMSTemplate</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_create_sms_template</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>Generated SMS template name: rtmkaoy
+</p><p style="color:maroon;">NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[normalize-space()='Actions']"}
+  (Session info: chrome=136.0.7103.113); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+0   chromedriver                        0x000000010503c3cc cxxbridge1$str$ptr + 2829900
+1   chromedriver                        0x0000000105034694 cxxbridge1$str$ptr + 2797844
+2   chromedriver                        0x0000000104b71fbc cxxbridge1$string$len + 90140
+3   chromedriver                        0x0000000104bb91bc cxxbridge1$string$len + 381468
+4   chromedriver                        0x0000000104bfa044 cxxbridge1$string$len + 647332
+5   chromedriver                        0x0000000104bad3f8 cxxbridge1$string$len + 332888
+6   chromedriver                        0x00000001050007f0 cxxbridge1$str$ptr + 2585200
+7   chromedriver                        0x0000000105003ac0 cxxbridge1$str$ptr + 2598208
+8   chromedriver                        0x0000000104fe1dc4 cxxbridge1$str$ptr + 2459716
+9   chromedriver                        0x0000000105004338 cxxbridge1$str$ptr + 2600376
+10  chromedriver                        0x0000000104fd3650 cxxbridge1$str$ptr + 2400464
+11  chromedriver                        0x000000010502429c cxxbridge1$str$ptr + 2731292
+12  chromedriver                        0x0000000105024428 cxxbridge1$str$ptr + 2731688
+13  chromedriver                        0x00000001050342e0 cxxbridge1$str$ptr + 2796896
+14  libsystem_pthread.dylib             0x000000018c0f1c0c _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018c0ecb80 thread_start + 8
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/Users/arunkumar.vadivel/Pythonwork/venv/SMS_report.py", line 43, in test_create_sms_template
+    driver.find_element(By.XPATH, "//span[normalize-space()='Actions']").click()
+  File "/Users/arunkumar.vadivel/Pythonwork/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 898, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+  File "/Users/arunkumar.vadivel/Pythonwork/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+  File "/Users/arunkumar.vadivel/Pythonwork/venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[normalize-space()='Actions']"}
+  (Session info: chrome=136.0.7103.113); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+0   chromedriver                        0x000000010503c3cc cxxbridge1$str$ptr + 2829900
+1   chromedriver                        0x0000000105034694 cxxbridge1$str$ptr + 2797844
+2   chromedriver                        0x0000000104b71fbc cxxbridge1$string$len + 90140
+3   chromedriver                        0x0000000104bb91bc cxxbridge1$string$len + 381468
+4   chromedriver                        0x0000000104bfa044 cxxbridge1$string$len + 647332
+5   chromedriver                        0x0000000104bad3f8 cxxbridge1$string$len + 332888
+6   chromedriver                        0x00000001050007f0 cxxbridge1$str$ptr + 2585200
+7   chromedriver                        0x0000000105003ac0 cxxbridge1$str$ptr + 2598208
+8   chromedriver                        0x0000000104fe1dc4 cxxbridge1$str$ptr + 2459716
+9   chromedriver                        0x0000000105004338 cxxbridge1$str$ptr + 2600376
+10  chromedriver                        0x0000000104fd3650 cxxbridge1$str$ptr + 2400464
+11  chromedriver                        0x000000010502429c cxxbridge1$str$ptr + 2731292
+12  chromedriver                        0x0000000105024428 cxxbridge1$str$ptr + 2731688
+13  chromedriver                        0x00000001050342e0 cxxbridge1$str$ptr + 2796896
+14  libsystem_pthread.dylib             0x000000018c0f1c0c _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018c0ecb80 thread_start + 8
+
+</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 1, Pass: 0, Error: 1 -- Duration: 19.78 s
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('td').on('click', '.btn', function(e){
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                var $this = $(this);
+                var $nextRow = $this.closest('tr').next('tr');
+                $nextRow.slideToggle("fast");
+                $this.text(function(i, text){
+                    if (text === 'View') {
+                        return 'Hide';
+                    } else {
+                        return 'View';
+                    };
+                });
+            });
+        });
+    </script>
+</body>
+</html
