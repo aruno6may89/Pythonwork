@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unittest Results</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-capitalize">Unittest Results</h2>
+                <p class='attribute'><strong>Start Time: </strong>2025-05-15 16:21:59</p>
+                <p class='attribute'><strong>Duration: </strong>21.71 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 4, Pass: 2, Error: 2</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>__main__.SignInPageTest</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_1_login</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_2_open_customer_creation_popup</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_3_create_customer</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">StaleElementReferenceException: Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=136.0.7103.113); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+0   chromedriver                        0x000000010289edec cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000102897088 cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001023de8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001023e44dc cxxbridge1$string$len + 116584
+4   chromedriver                        0x00000001023e6818 cxxbridge1$string$len + 125604
+5   chromedriver                        0x00000001023e68c0 cxxbridge1$string$len + 125772
+6   chromedriver                        0x0000000102425270 cxxbridge1$string$len + 382204
+7   chromedriver                        0x000000010241ad3c cxxbridge1$string$len + 339912
+8   chromedriver                        0x00000001024667b8 cxxbridge1$string$len + 649796
+9   chromedriver                        0x0000000102419a80 cxxbridge1$string$len + 335116
+10  chromedriver                        0x0000000102863c74 cxxbridge1$str$ptr + 2575000
+11  chromedriver                        0x0000000102866f40 cxxbridge1$str$ptr + 2588004
+12  chromedriver                        0x00000001028439fc cxxbridge1$str$ptr + 2443296
+13  chromedriver                        0x00000001028677bc cxxbridge1$str$ptr + 2590176
+14  chromedriver                        0x0000000102834af0 cxxbridge1$str$ptr + 2382100
+15  chromedriver                        0x00000001028879a0 cxxbridge1$str$ptr + 2721732
+16  chromedriver                        0x0000000102887b2c cxxbridge1$str$ptr + 2722128
+17  chromedriver                        0x0000000102896cd4 cxxbridge1$str$ptr + 2783992
+18  libsystem_pthread.dylib             0x000000018c0f1c0c _pthread_start + 136
+19  libsystem_pthread.dylib             0x000000018c0ecb80 thread_start + 8
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/Users/arunkumar.vadivel/Pythonwork/venv/customercreate.py", line 74, in test_3_create_customer
+    select.select_by_visible_text("Test AR specialist")
+  File "/Users/arunkumar.vadivel/Pythonwork/venv/lib/python3.9/site-packages/selenium/webdriver/support/select.py", line 128, in select_by_visible_text
+    candidates = self._el.find_elements(By.XPATH, xpath)
+  File "/Users/arunkumar.vadivel/Pythonwork/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 630, in find_elements
+    return self._execute(Command.FIND_CHILD_ELEMENTS, {"using": by, "value": value})["value"]
+  File "/Users/arunkumar.vadivel/Pythonwork/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 572, in _execute
+    return self._parent.execute(command, params)
+  File "/Users/arunkumar.vadivel/Pythonwork/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+  File "/Users/arunkumar.vadivel/Pythonwork/venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=136.0.7103.113); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+0   chromedriver                        0x000000010289edec cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000102897088 cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001023de8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001023e44dc cxxbridge1$string$len + 116584
+4   chromedriver                        0x00000001023e6818 cxxbridge1$string$len + 125604
+5   chromedriver                        0x00000001023e68c0 cxxbridge1$string$len + 125772
+6   chromedriver                        0x0000000102425270 cxxbridge1$string$len + 382204
+7   chromedriver                        0x000000010241ad3c cxxbridge1$string$len + 339912
+8   chromedriver                        0x00000001024667b8 cxxbridge1$string$len + 649796
+9   chromedriver                        0x0000000102419a80 cxxbridge1$string$len + 335116
+10  chromedriver                        0x0000000102863c74 cxxbridge1$str$ptr + 2575000
+11  chromedriver                        0x0000000102866f40 cxxbridge1$str$ptr + 2588004
+12  chromedriver                        0x00000001028439fc cxxbridge1$str$ptr + 2443296
+13  chromedriver                        0x00000001028677bc cxxbridge1$str$ptr + 2590176
+14  chromedriver                        0x0000000102834af0 cxxbridge1$str$ptr + 2382100
+15  chromedriver                        0x00000001028879a0 cxxbridge1$str$ptr + 2721732
+16  chromedriver                        0x0000000102887b2c cxxbridge1$str$ptr + 2722128
+17  chromedriver                        0x0000000102896cd4 cxxbridge1$str$ptr + 2783992
+18  libsystem_pthread.dylib             0x000000018c0f1c0c _pthread_start + 136
+19  libsystem_pthread.dylib             0x000000018c0ecb80 thread_start + 8
+
+</p>
+                            </td>
+                        </tr>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_4_verify_customer</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">ElementClickInterceptedException: Message: element click intercepted: Element <button class="space-x-2 item-center size-fit gap-1.5 rounded-lg border-none py-[10px] pl-[14px] pr-[16px] font-semibold text-blue_gray-800 shadow-xs outline outline-[1px] outline-offset-[-1px] outline-[#D0D5DD] flex cursor-pointer flex-row items-center justify-center whitespace-nowrap text-center text-sm">...</button> is not clickable at point (1007, 186). Other element would receive the click: <div class="flex-1 overflow-y-auto px-6">...</div>
+  (Session info: chrome=136.0.7103.113)
+Stacktrace:
+0   chromedriver                        0x000000010289edec cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000102897088 cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001023de8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x000000010242b1a8 cxxbridge1$string$len + 406580
+4   chromedriver                        0x0000000102429738 cxxbridge1$string$len + 399812
+5   chromedriver                        0x000000010242754c cxxbridge1$string$len + 391128
+6   chromedriver                        0x0000000102426948 cxxbridge1$string$len + 388052
+7   chromedriver                        0x000000010241b2b0 cxxbridge1$string$len + 341308
+8   chromedriver                        0x000000010241ad3c cxxbridge1$string$len + 339912
+9   chromedriver                        0x00000001024667b8 cxxbridge1$string$len + 649796
+10  chromedriver                        0x0000000102419a80 cxxbridge1$string$len + 335116
+11  chromedriver                        0x0000000102863c74 cxxbridge1$str$ptr + 2575000
+12  chromedriver                        0x0000000102866f40 cxxbridge1$str$ptr + 2588004
+13  chromedriver                        0x00000001028439fc cxxbridge1$str$ptr + 2443296
+14  chromedriver                        0x00000001028677bc cxxbridge1$str$ptr + 2590176
+15  chromedriver                        0x0000000102834af0 cxxbridge1$str$ptr + 2382100
+16  chromedriver                        0x00000001028879a0 cxxbridge1$str$ptr + 2721732
+17  chromedriver                        0x0000000102887b2c cxxbridge1$str$ptr + 2722128
+18  chromedriver                        0x0000000102896cd4 cxxbridge1$str$ptr + 2783992
+19  libsystem_pthread.dylib             0x000000018c0f1c0c _pthread_start + 136
+20  libsystem_pthread.dylib             0x000000018c0ecb80 thread_start + 8
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/Users/arunkumar.vadivel/Pythonwork/venv/customercreate.py", line 90, in test_4_verify_customer
+    filter_btn.click()
+  File "/Users/arunkumar.vadivel/Pythonwork/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 119, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Users/arunkumar.vadivel/Pythonwork/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 572, in _execute
+    return self._parent.execute(command, params)
+  File "/Users/arunkumar.vadivel/Pythonwork/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+  File "/Users/arunkumar.vadivel/Pythonwork/venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <button class="space-x-2 item-center size-fit gap-1.5 rounded-lg border-none py-[10px] pl-[14px] pr-[16px] font-semibold text-blue_gray-800 shadow-xs outline outline-[1px] outline-offset-[-1px] outline-[#D0D5DD] flex cursor-pointer flex-row items-center justify-center whitespace-nowrap text-center text-sm">...</button> is not clickable at point (1007, 186). Other element would receive the click: <div class="flex-1 overflow-y-auto px-6">...</div>
+  (Session info: chrome=136.0.7103.113)
+Stacktrace:
+0   chromedriver                        0x000000010289edec cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000102897088 cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001023de8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x000000010242b1a8 cxxbridge1$string$len + 406580
+4   chromedriver                        0x0000000102429738 cxxbridge1$string$len + 399812
+5   chromedriver                        0x000000010242754c cxxbridge1$string$len + 391128
+6   chromedriver                        0x0000000102426948 cxxbridge1$string$len + 388052
+7   chromedriver                        0x000000010241b2b0 cxxbridge1$string$len + 341308
+8   chromedriver                        0x000000010241ad3c cxxbridge1$string$len + 339912
+9   chromedriver                        0x00000001024667b8 cxxbridge1$string$len + 649796
+10  chromedriver                        0x0000000102419a80 cxxbridge1$string$len + 335116
+11  chromedriver                        0x0000000102863c74 cxxbridge1$str$ptr + 2575000
+12  chromedriver                        0x0000000102866f40 cxxbridge1$str$ptr + 2588004
+13  chromedriver                        0x00000001028439fc cxxbridge1$str$ptr + 2443296
+14  chromedriver                        0x00000001028677bc cxxbridge1$str$ptr + 2590176
+15  chromedriver                        0x0000000102834af0 cxxbridge1$str$ptr + 2382100
+16  chromedriver                        0x00000001028879a0 cxxbridge1$str$ptr + 2721732
+17  chromedriver                        0x0000000102887b2c cxxbridge1$str$ptr + 2722128
+18  chromedriver                        0x0000000102896cd4 cxxbridge1$str$ptr + 2783992
+19  libsystem_pthread.dylib             0x000000018c0f1c0c _pthread_start + 136
+20  libsystem_pthread.dylib             0x000000018c0ecb80 thread_start + 8
+
+</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 4, Pass: 2, Error: 2 -- Duration: 21.71 s
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('td').on('click', '.btn', function(e){
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                var $this = $(this);
+                var $nextRow = $this.closest('tr').next('tr');
+                $nextRow.slideToggle("fast");
+                $this.text(function(i, text){
+                    if (text === 'View') {
+                        return 'Hide';
+                    } else {
+                        return 'View';
+                    };
+                });
+            });
+        });
+    </script>
+</body>
+</html
